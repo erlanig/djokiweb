@@ -30,7 +30,7 @@ const Home = () => {
               badge="Ready to Assist You"
             />
           </div>
-          <div className="flex flex-col gap-6 sm:flex-row w-full sm:w-fit">
+          <div className="flex flex-col gap-6 sm:flex-row w-62 sm:w-fit">
             <ButtonLink
               value="Contact-Us"
               color="white"
@@ -68,12 +68,14 @@ const Home = () => {
         {/* Logo List */}
         <LogoList />
         {/* How We Work */}
-        <section className="grid grid-cols-1 gap-6 sm:gap-8 place-items-center lg:grid-cols-2">
-          <aside className="w-3/4 h-[500px] relative" data-aos="fade-right">
+        <section className="grid grid-cols-1 gap-4 sm:gap-8 place-items-center lg:grid-cols-2">
+          <aside className="w-3/4 h-[500px] relative mb-0" data-aos="fade-right">
             <Image
               src={"/images/innovation.png"}
-              layout="fill"
-              objectFit="fill"
+              layout="responsive"      // responsive layout
+              width={700}              // width asli gambar (pixel)
+              height={500}             // height asli gambar (pixel)
+              objectFit="contain"      // supaya proporsi terjaga
               alt="Structured plan"
             />
           </aside>
@@ -118,8 +120,10 @@ const Home = () => {
           >
             <Image
               src={"/images/consult.png"}
-              layout="fill"
-              objectFit="fill"
+              layout="responsive"      // responsive layout
+              width={700}              // width asli gambar (pixel)
+              height={500}             // height asli gambar (pixel)
+              objectFit="contain"      // supaya proporsi terjaga
               alt="Code editor and UI Editing popup"
             />
           </aside>

@@ -29,40 +29,48 @@ const NavBar = () => {
 
   return (
     <nav
-      className={`pt-2 sm:pt-4 w-full top-0 left-0 z-30 ${
+      className={`w-full top-2 left-0 z-30 ${
         isScrolled ? 'fixed' : 'absolute'
       }`}
+      style={{ paddingTop: 4, paddingBottom: 4 }} // padding kecil (1rem = 16px) jadi 4px aja
     >
       <Container>
         <div
           className={`${
             browserName === 'Firefox' ? 'bg-gray-900' : 'bg-light'
-          } px-2 sm:px-4 py-1 sm:py-2 w-full rounded-md backdrop-blur-3xl ${
+          } px-2 sm:px-4 w-full rounded-md backdrop-blur-3xl ${
             isScrolled || isOpen ? '' : 'lg:bg-transparent lg:px-0'
-          }`}
+          } flex items-center min-h-[36px] sm:min-h-[40px]`}
         >
           <div className="flex flex-col lg:flex-row w-full justify-between lg:items-center">
             <div className="w-full flex justify-between items-center lg:w-fit">
-              {/* Ukuran logo responsif: kecil di mobile, sedang di desktop */}
-              <div className="w-20 sm:w-28 lg:w-32">
+              {/* Logo dibuat sangat kecil, misal 40px width di mobile */}
+              <div className="w-10 sm:w-16 lg:w-20">
                 <NavBrand />
               </div>
 
-              <div className="lg:hidden" onClick={() => setIsOpen(!isOpen)}>
-                <div
-                  className={`text-white text-lg sm:text-xl ${
-                    isMobile ? 'cursor-default' : 'cursor-pointer'
-                  }`}
-                >
-                  {isOpen ? <FiX /> : <FiMenu />}
+              {/* Tombol menu hamburger */}
+              <div
+                className="lg:hidden"
+                onClick={() => setIsOpen(!isOpen)}
+                role="button"
+                tabIndex={0}
+                aria-label={isOpen ? 'Close menu' : 'Open menu'}
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter' || e.key === ' ') setIsOpen(!isOpen)
+                }}
+              >
+                <div className="text-white cursor-pointer">
+                  {isOpen ? <FiX size={20} /> : <FiMenu size={20} />}
                 </div>
               </div>
             </div>
 
+            {/* Menu dropdown, center saat di mobile (isOpen) */}
             <div
               className={`${
-                isOpen ? '' : 'hidden '
-              }space-y-2 mt-2 lg:mt-0 lg:space-y-0 lg:space-x-8 lg:flex lg:items-center`}
+                isOpen ? 'flex flex-col items-center' : 'hidden'
+              } mt-2 lg:mt-0 lg:flex lg:flex-row lg:items-center lg:space-x-8 lg:space-y-0 space-y-2 w-full lg:w-auto`}
             >
               <NavLink href="#banner" value="Home" canActive={false} />
               <NavLink href="#feature" value="Services" canActive={false} />
@@ -71,7 +79,12 @@ const NavBar = () => {
               <NavLink href="#faq" value="FAQ" canActive={false} />
             </div>
 
-            <div className={`${isOpen ? '' : 'hidden '} lg:block mt-2 lg:mt-0`}>
+            {/* Tombol Contact, juga ikut hide/show */}
+            <div
+              className={`${
+                isOpen ? 'flex justify-center w-full mt-2' : 'hidden'
+              } lg:flex lg:block lg:mt-0 lg:w-auto`}
+            >
               <ButtonLink
                 value="Contact"
                 style="light"
