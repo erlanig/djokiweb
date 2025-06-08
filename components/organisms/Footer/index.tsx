@@ -1,69 +1,80 @@
-import NavBrand from 'components/atoms/NavBrand'
-import NavLink from 'components/atoms/NavLink'
-import Text from 'components/atoms/Text'
 import React from 'react'
+import NavBrand from 'components/atoms/NavBrand'
+import Text from 'components/atoms/Text'
+
+import { FiPhone, FiMail, FiGlobe, FiInstagram } from 'react-icons/fi'
+
+const IconButton = ({ icon: Icon, href, value, onlyIcon = false }) => {
+  const isExternal = href.startsWith('http')
+
+  return (
+    <a
+      href={href}
+      className={`flex items-center gap-2 text-white hover:text-blue-400 transition-colors cursor-pointer ${
+        onlyIcon ? 'justify-center' : ''
+      }`}
+      target={isExternal ? '_blank' : '_self'}
+      rel={isExternal ? 'noopener noreferrer' : undefined}
+      aria-label={value}
+    >
+      <Icon className="text-xl" />
+      {!onlyIcon && <span>{value}</span>}
+    </a>
+  )
+}
 
 const Footer = () => {
   return (
-    <>
-      <footer className="mt-32 pb-16">
-        <div className="flex flex-col gap-8 lg:flex-row lg:gap-16 xl:gap-20">
-          <div className="space-y-5">
-            <NavBrand />
-            <div className="">
-              <Text
-                value={`Copyright © ${new Date().getFullYear()}`}
-                textStyle="SectionParagraph"
-              />
-              <Text
-                value={`Design By Collosal LLC`}
-                textStyle="SectionParagraph"
-              />
-            </div>
-          </div>
-          <div className="grid grid-cols-2 gap-8 sm:grid-cols-3 lg:gap-16 xl:gap-20">
-            <div className="space-y-5">
-              <Text value="SERVICES" textStyle="FooterLinkGroupTitle" />
-              <div className="space-y-[10px]">
-                <NavLink
-                  value="Web Development"
-                  href="/service/detail"
-                />
-                <NavLink
-                  value="App Development"
-                  href="/service/detail"
-                />
-                <NavLink value="UI Design" href="/service/detail" />
-                <NavLink value="Consultation" href="/service/detail" />
-                <NavLink value="Maintenance" href="/service/detail" />
-                <NavLink value="Pricing" href="/pricing" />
-              </div>
-            </div>
-            <div className="space-y-5">
-              <Text value="COMPANY" textStyle="FooterLinkGroupTitle" />
-              <div className="space-y-[10px]">
-                <NavLink value="About" href="/about" />
-                <NavLink value="Contact" href="/contact" />
-                <NavLink value="Send Quote" href="/quote" />
-                <NavLink value="Privacy Policy" href="/privacy-policy" />
-                <NavLink value="Term of Service" href="/term-of-service" />
-                <NavLink value="Jobs" href="/jobs" />
-                <NavLink value="Blogs" href="/blog" />
-              </div>
-            </div>
-            <div className="space-y-5">
-              <Text value="RESOURCES" textStyle="FooterLinkGroupTitle" />
-              <div className="space-y-[10px]">
-                <NavLink value="Support" href="/support" />
-                <NavLink value="Documentation" href="/documentation" />
-                <NavLink value="License" href="/license" />
-                <NavLink value="Sitemap" href="/sitemap" />
-              </div>
-            </div>
+    <footer className="mt-32 pb-16 text-white">
+      <div className="flex flex-col gap-8 justify-center items-center text-center max-w-4xl mx-auto text-white">
+        {/* Bagian atas */}
+        <div className="space-y-5 text-white">
+          <NavBrand />
+          <div className="space-y-1 text-white">
+            <Text
+              value="Djoki Coding"
+              textStyle="SectionParagraph"
+              className="text-white"
+            />
+            <Text
+              value="Professional Development Services"
+              textStyle="SectionParagraph"
+              className="text-white"
+            />
           </div>
         </div>
-      </footer>
-    </>
+
+        {/* Bagian bawah: contact vertikal center */}
+        <div className="space-y-5 flex flex-col items-center">
+          <Text value="CONTACT" textStyle="FooterLinkGroupTitle" className="text-white" />
+          <div className="flex items-center space-x-4 text-white">
+            <IconButton
+              icon={FiPhone}
+              value="+62 851-7442-4245"
+              href="tel:+6285174424245"
+            />
+            <span className="select-none">|</span>
+            <IconButton
+              icon={FiMail}
+              value="djokicoding@gmail.com"
+              href="mailto:djokicoding@gmail.com"
+            />
+            <span className="select-none">|</span>
+            <IconButton
+              icon={FiGlobe}
+              value="www.djokicoding.store"
+              href="https://www.djokicoding.store"
+            />
+            <span className="select-none">|</span>
+            <IconButton
+              icon={FiInstagram}
+              value="@djokicoding"
+              href="https://instagram.com/djokicoding"
+            />
+          </div>
+        </div>
+      </div>
+    </footer>
   )
 }
 

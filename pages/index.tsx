@@ -18,7 +18,8 @@ const Home = () => {
     <>
       <PageTemplate title="Home - DjokiCoding">
         {/* Banner Section */}
-        <section
+        <section 
+          id = "banner"
           className="flex flex-col gap-10 items-center"
           data-aos="fade-up"
         >
@@ -41,7 +42,7 @@ const Home = () => {
           </div>
         </section>
         {/* Feature List */}
-        <section className="grid grid-cols-1 gap-5 md:grid-cols-3 mb-16">
+        <section id= "feature" className="grid grid-cols-1 gap-5 md:grid-cols-3 mb-16">
           <div data-aos="fade-up">
             <FeatureCard
               title="Expert in Coding & IT Solutions"
@@ -152,7 +153,7 @@ const Home = () => {
 
         <LineDivider />
         {/* Our Projects */}
-        <section className="flex flex-col gap-16 items-center">
+        <section id = "projects" className="flex flex-col gap-16 items-center">
           <div
             className="text-center sm:w-10/12 md:w-8/12 lg:w-6/12"
             data-aos="zoom-in-up"
@@ -165,14 +166,16 @@ const Home = () => {
           <div className="w-full grid grid-cols-1 gap-10 sm:grid-cols-2 sm:gap-5">
             <div data-aos="flip-left">
               <ProjectCard
-                title="The Desktop App Landing Page"
-                description="A landing page for desktop app"
+                title="Modern Web Experience"
+                description="An elegant and responsive landing page designed for a cutting-edge desktop application."
+                imageSrc="/images/web.png"
               />
             </div>
             <div data-aos="flip-right">
               <ProjectCard
-                title="The Mobile App Landing Page"
-                description="A landing page for mobile app"
+                title="Smart ML Project"
+                description="An innovative machine learning project showcasing advanced models and data-driven insights."
+                imageSrc="/images/ml.png"
                 bottomSquareSize="big"
               />
             </div>
@@ -181,7 +184,7 @@ const Home = () => {
 
         <LineDivider />
         {/* FAQ */}
-        <section className="grid grid-cols-1 place-items-center my-16">
+        <section id= "faq" className="grid grid-cols-1 place-items-center my-16">
           <div className="w-full sm:w-10/12 md:w-8/12">
             <div className="text-center mb-6" data-aos="zoom-in-up">
               <PageSentence badge="FAQs" title="Frequently Asked Questions" />

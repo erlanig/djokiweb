@@ -36,4 +36,7 @@
   .swiper-slide-active {
     @apply border-2 border-primary mt-0 !important;
   }
+  section[id] {
+    scroll-margin-top: 200px; /* Sesuaikan dengan tinggi navbar */
+  }
 }

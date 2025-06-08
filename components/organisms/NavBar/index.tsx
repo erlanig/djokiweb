@@ -4,32 +4,29 @@ import NavLink from 'components/atoms/NavLink'
 import ButtonLink from 'components/atoms/Button/ButtonLink'
 import Container from 'components/templates/Container'
 import { FiMenu, FiX } from 'react-icons/fi'
-import UAParser from 'ua-parser-js'
 import useMobileDeviceDetection from 'hooks/useMobileDetection'
 import useGetBrowserName from 'hooks/useGetBrowserName'
+
 const NavBar = () => {
   const [isOpen, setIsOpen] = useState<boolean>(false)
   const [isScrolled, setIsScrolled] = useState<boolean>(false)
   const browserName = useGetBrowserName()
   const isMobile = useMobileDeviceDetection()
+
   useEffect(() => {
     window.addEventListener('scroll', () => {
-      if (window.scrollY > 150) {
-        setIsScrolled(true)
-      } else {
-        setIsScrolled(false)
-      }
+      setIsScrolled(window.scrollY > 150)
     })
   }, [])
+
   useEffect(() => {
     if (isOpen) {
-      document.body.classList.add('h-screen')
-      document.body.classList.add('overflow-y-hidden')
+      document.body.classList.add('h-screen', 'overflow-y-hidden')
     } else {
-      document.body.classList.remove('h-screen')
-      document.body.classList.remove('overflow-y-hidden')
+      document.body.classList.remove('h-screen', 'overflow-y-hidden')
     }
   }, [isOpen])
+
   return (
     <>
       <nav
@@ -40,7 +37,7 @@ const NavBar = () => {
         <Container>
           <div
             className={`${
-              browserName == 'Firefox' ? 'bg-gray-900' : 'bg-light'
+              browserName === 'Firefox' ? 'bg-gray-900' : 'bg-light'
             } px-6 py-4 w-full rounded-md backdrop-blur-3xl ${
               isScrolled || isOpen ? '' : 'lg:bg-transparent lg:px-0'
             }`}
@@ -61,16 +58,13 @@ const NavBar = () => {
               <div
                 className={`${
                   isOpen ? '' : 'hidden '
-                }space-y-5 mt-4 lg:mt-0 lg:space-y-0 lg:space-x-16 lg:flex lg:place-items-center`}
+                }space-y-5 mt-4 lg:mt-0 lg:space-y-0 lg:space-x-12 lg:flex lg:place-items-center`}
               >
-                <NavLink href="/service" value="Services" canActive={true} />
-                <NavLink
-                  href="/how-we-work"
-                  value="How We Work"
-                  canActive={true}
-                />
-                <NavLink href="/project" value="Project" canActive={true} />
-                <NavLink href="/about" value="About" canActive={true} />
+                <NavLink href="#banner" value="Home" canActive={false} />
+                <NavLink href="#feature" value="Services" canActive={false} />
+                <NavLink href="#contact-us" value="Contact Us" canActive={false} />
+                <NavLink href="#projects" value="Projects" canActive={false} />
+                <NavLink href="#faq" value="FAQ" canActive={false} />
               </div>
               <div
                 className={`${isOpen ? '' : 'hidden '}lg:block mt-5 lg:mt-0`}
