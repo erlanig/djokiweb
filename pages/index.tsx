@@ -16,7 +16,7 @@ import { FiSettings, FiClock, FiMonitor } from "react-icons/fi";
 const Home = () => {
   return (
     <>
-      <PageTemplate title="Home - DjokiCoding">
+      <PageTemplate title="DjokiCoding">
         {/* Banner Section */}
         <section 
           id = "banner"
