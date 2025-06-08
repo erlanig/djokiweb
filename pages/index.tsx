@@ -168,7 +168,7 @@ const Home = () => {
               <ProjectCard
                 title="Modern Web Experience"
                 description="An elegant and responsive landing page designed for a cutting-edge desktop application."
-                imageSrc="/images/web.png"
+                imageSrc="/images/web.jpeg"
               />
             </div>
             <div data-aos="flip-right">
