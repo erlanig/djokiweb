@@ -10,7 +10,7 @@ const Document = () => {
           <meta name='tags' content='web,app,ui,maintenance,company,collosal,profile' />
         <link
           rel="shortcut icon"
-          href="/images/favicon.png"
+          href="/icon.png"
           type="image/x-icon"
         />
       </Head>

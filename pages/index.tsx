@@ -173,9 +173,9 @@ const Home = () => {
             </div>
             <div data-aos="flip-right">
               <ProjectCard
-                title="Smart ML Project"
-                description="An innovative machine learning project showcasing advanced models and data-driven insights."
-                imageSrc="/images/ml.png"
+                title="Sleek Mobile Landing"
+                description="A vibrant and user-friendly landing page crafted specifically for mobile apps to captivate users on the go."
+                imageSrc="/images/mobile.jpeg"
                 bottomSquareSize="big"
               />
             </div>

@@ -41,19 +41,17 @@ const Footer = () => {
             <Text
               value="Djoki Coding"
               textStyle="SectionParagraph"
-              className="text-white"
             />
             <Text
               value="Professional Development Services"
               textStyle="SectionParagraph"
-              className="text-white"
             />
           </div>
         </div>
 
         {/* Bagian bawah: contact vertikal center */}
         <div className="space-y-5 flex flex-col items-center">
-          <Text value="CONTACT" textStyle="FooterLinkGroupTitle" className="text-white" />
+          <Text value="CONTACT" textStyle="FooterLinkGroupTitle" />
           <div className="flex items-center space-x-4 text-white">
             <IconButton
               icon={FiPhone}
