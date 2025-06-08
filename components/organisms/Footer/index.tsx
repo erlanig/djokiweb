@@ -49,28 +49,28 @@ const Footer = () => {
           </div>
         </div>
 
-        {/* Bagian bawah: contact vertikal center */}
+        {/* Bagian bawah: contact responsive */}
         <div className="space-y-5 flex flex-col items-center">
           <Text value="CONTACT" textStyle="FooterLinkGroupTitle" />
-          <div className="flex items-center space-x-4 text-white">
+          <div className="flex flex-wrap justify-center gap-4 text-white max-w-full">
             <IconButton
               icon={FiPhone}
               value="+62 851-7442-4245"
               href="tel:+6285174424245"
             />
-            <span className="select-none">|</span>
+            <span className="select-none hidden sm:inline">|</span>
             <IconButton
               icon={FiMail}
               value="djokicoding@gmail.com"
               href="mailto:djokicoding@gmail.com"
             />
-            <span className="select-none">|</span>
+            <span className="select-none hidden sm:inline">|</span>
             <IconButton
               icon={FiGlobe}
               value="www.djokicoding.store"
               href="https://www.djokicoding.store"
             />
-            <span className="select-none">|</span>
+            <span className="select-none hidden sm:inline">|</span>
             <IconButton
               icon={FiInstagram}
               value="@djokicoding"
@@ -78,6 +78,7 @@ const Footer = () => {
             />
           </div>
         </div>
+
       </div>
     </footer>
   )
