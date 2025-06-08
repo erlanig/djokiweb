@@ -16,4 +16,4 @@ Collosal is a company profile website for a company who serve for Application De
  
 ## Author
 This website coded by [Eko Susilo](https://github.com/iceboy1406)
-And design by [Muhamad Nauval Azhar](https://nauv.al/)
+And design by [Muhamad Nauval Azhar](https://nauv.al/)# djokiweb
