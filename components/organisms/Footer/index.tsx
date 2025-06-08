@@ -4,24 +4,31 @@ import Text from 'components/atoms/Text'
 
 import { FiPhone, FiMail, FiGlobe, FiInstagram } from 'react-icons/fi'
 
-const IconButton = ({ icon: Icon, href, value, onlyIcon = false }) => {
-  const isExternal = href.startsWith('http')
+import { IconType } from 'react-icons';
+
+interface IconButtonProps {
+  icon: IconType;
+  href: string;
+  value?: string;
+  onlyIcon?: boolean;
+}
+
+const IconButton = ({ icon: Icon, href, value, onlyIcon = false }: IconButtonProps) => {
+  const isExternal = href.startsWith('http');
 
   return (
     <a
       href={href}
-      className={`flex items-center gap-2 text-white hover:text-blue-400 transition-colors cursor-pointer ${
-        onlyIcon ? 'justify-center' : ''
-      }`}
       target={isExternal ? '_blank' : '_self'}
       rel={isExternal ? 'noopener noreferrer' : undefined}
-      aria-label={value}
+      className="flex items-center gap-2 text-white hover:underline"
     >
-      <Icon className="text-xl" />
+      <Icon />
       {!onlyIcon && <span>{value}</span>}
     </a>
-  )
-}
+  );
+};
+
 
 const Footer = () => {
   return (
