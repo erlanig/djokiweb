@@ -11,25 +11,32 @@ const Project = () => {
   interface Project {
     title: string
     description: string
+    imageSrc: string
   }
+
   const projectList: Project[] = [
     {
       title: 'The Mobile App Landing Page',
       description: 'A landing page for mobile app',
+      imageSrc: '/images/mobile.jpeg',  // contoh path image
     },
     {
       title: 'The Desktop App Landing Page',
       description: 'A landing page for desktop app',
+      imageSrc: '/images/desktop.jpeg',
     },
     {
       title: 'Simple Mobile Blog App',
       description: 'A blog app on mobile platform',
+      imageSrc: '/images/blog.jpeg',
     },
     {
       title: 'Realtime Chat App UI Design',
       description: 'A UI design for realtime chat app',
+      imageSrc: '/images/chat.jpeg',
     },
   ]
+
   return (
     <PageTemplate title="Project - Collosal">
       <section className="flex flex-col items-center gap-5 md:flex-row md:justify-between">
@@ -54,19 +61,24 @@ const Project = () => {
           />
         </aside>
       </section>
+
       <LineDivider />
+
       <section className="grid place-items-center gap-16">
         <div className="w-full grid grid-cols-1 gap-y-16 sm:grid-cols-2 sm:gap-x-5">
-          {projectList.map((project) => {
-            return (
-              <div className="basis-full lg:basis-1/2" key={randomString(64)} data-aos="zoom-in-up">
-                <ProjectCard
-                  title={project.title}
-                  description={project.description}
-                />
-              </div>
-            )
-          })}
+          {projectList.map((project) => (
+            <div
+              className="basis-full lg:basis-1/2"
+              key={randomString(64)}
+              data-aos="zoom-in-up"
+            >
+              <ProjectCard
+                title={project.title}
+                description={project.description}
+                imageSrc={project.imageSrc}
+              />
+            </div>
+          ))}
         </div>
         <Button value="Load More" color="white" style="light" />
       </section>

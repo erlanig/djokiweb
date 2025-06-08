@@ -11,17 +11,22 @@ const ProjectDetail = () => {
   interface Project {
     title: string
     description: string
+    imageSrc: string
   }
+
   const projectList: Project[] = [
     {
       title: 'Simple Mobile Blog App',
       description: 'A blog app on mobile platform',
+      imageSrc: '/images/blog.jpeg',
     },
     {
       title: 'Realtime Chat App UI Design',
       description: 'A UI design for realtime chat app',
+      imageSrc: '/images/chat.jpeg',
     },
   ]
+
   return (
     <PageTemplate title='Project Detail - Collosal'>
       <section className="grid place-items-center" data-aos="zoom-in-up">
@@ -70,20 +75,19 @@ const ProjectDetail = () => {
           />
         </div>
         <div className="w-full grid grid-cols-1 gap-y-16 sm:grid-cols-2 sm:gap-x-5">
-          {projectList.map((project) => {
-            return (
-              <div
-                className="basis-full lg:basis-1/2"
-                key={randomString(64)}
-                data-aos="zoom-in-up"
-              >
-                <ProjectCard
-                  title={project.title}
-                  description={project.description}
-                />
-              </div>
-            )
-          })}
+          {projectList.map((project) => (
+            <div
+              className="basis-full lg:basis-1/2"
+              key={randomString(64)}
+              data-aos="zoom-in-up"
+            >
+              <ProjectCard
+                title={project.title}
+                description={project.description}
+                imageSrc={project.imageSrc} // Kirim imageSrc ke ProjectCard
+              />
+            </div>
+          ))}
         </div>
       </section>
     </PageTemplate>
