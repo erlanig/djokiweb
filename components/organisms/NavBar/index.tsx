@@ -14,9 +14,9 @@ const NavBar = () => {
   const isMobile = useMobileDeviceDetection()
 
   useEffect(() => {
-    window.addEventListener('scroll', () => {
-      setIsScrolled(window.scrollY > 150)
-    })
+    const onScroll = () => setIsScrolled(window.scrollY > 150)
+    window.addEventListener('scroll', onScroll)
+    return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
   useEffect(() => {
@@ -28,60 +28,62 @@ const NavBar = () => {
   }, [isOpen])
 
   return (
-    <>
-      <nav
-        className={`pt-8 w-full top-0 left-0 z-30 ${
-          isScrolled ? 'fixed' : 'absolute'
-        }`}
-      >
-        <Container>
-          <div
-            className={`${
-              browserName === 'Firefox' ? 'bg-gray-900' : 'bg-light'
-            } px-6 py-4 w-full rounded-md backdrop-blur-3xl ${
-              isScrolled || isOpen ? '' : 'lg:bg-transparent lg:px-0'
-            }`}
-          >
-            <div className="flex flex-col lg:flex-row w-full place-content-between lg:place-items-center">
-              <div className="w-full flex flex-row place-content-between place-items-center lg:w-fit">
+    <nav
+      className={`pt-2 sm:pt-4 w-full top-0 left-0 z-30 ${
+        isScrolled ? 'fixed' : 'absolute'
+      }`}
+    >
+      <Container>
+        <div
+          className={`${
+            browserName === 'Firefox' ? 'bg-gray-900' : 'bg-light'
+          } px-2 sm:px-4 py-1 sm:py-2 w-full rounded-md backdrop-blur-3xl ${
+            isScrolled || isOpen ? '' : 'lg:bg-transparent lg:px-0'
+          }`}
+        >
+          <div className="flex flex-col lg:flex-row w-full justify-between lg:items-center">
+            <div className="w-full flex justify-between items-center lg:w-fit">
+              {/* Ukuran logo responsif: kecil di mobile, sedang di desktop */}
+              <div className="w-20 sm:w-28 lg:w-32">
                 <NavBrand />
-                <div className="lg:hidden" onClick={() => setIsOpen(!isOpen)}>
-                  <div
-                    className={`text-white text-2xl ${
-                      isMobile ? 'cursor-default' : 'cursor-pointer'
-                    }`}
-                  >
-                    {isOpen ? <FiX /> : <FiMenu />}
-                  </div>
+              </div>
+
+              <div className="lg:hidden" onClick={() => setIsOpen(!isOpen)}>
+                <div
+                  className={`text-white text-lg sm:text-xl ${
+                    isMobile ? 'cursor-default' : 'cursor-pointer'
+                  }`}
+                >
+                  {isOpen ? <FiX /> : <FiMenu />}
                 </div>
               </div>
-              <div
-                className={`${
-                  isOpen ? '' : 'hidden '
-                }space-y-5 mt-4 lg:mt-0 lg:space-y-0 lg:space-x-12 lg:flex lg:place-items-center`}
-              >
-                <NavLink href="#banner" value="Home" canActive={false} />
-                <NavLink href="#feature" value="Services" canActive={false} />
-                <NavLink href="#contact-us" value="Contact Us" canActive={false} />
-                <NavLink href="#projects" value="Projects" canActive={false} />
-                <NavLink href="#faq" value="FAQ" canActive={false} />
-              </div>
-              <div
-                className={`${isOpen ? '' : 'hidden '}lg:block mt-5 lg:mt-0`}
-              >
-                <ButtonLink
-                  value="Contact"
-                  style="light"
-                  color="white"
-                  size="small"
-                  href="#contact-us"
-                />
-              </div>
+            </div>
+
+            <div
+              className={`${
+                isOpen ? '' : 'hidden '
+              }space-y-2 mt-2 lg:mt-0 lg:space-y-0 lg:space-x-8 lg:flex lg:items-center`}
+            >
+              <NavLink href="#banner" value="Home" canActive={false} />
+              <NavLink href="#feature" value="Services" canActive={false} />
+              <NavLink href="#contact-us" value="Contact Us" canActive={false} />
+              <NavLink href="#projects" value="Projects" canActive={false} />
+              <NavLink href="#faq" value="FAQ" canActive={false} />
+            </div>
+
+            <div className={`${isOpen ? '' : 'hidden '} lg:block mt-2 lg:mt-0`}>
+              <ButtonLink
+                value="Contact"
+                style="light"
+                color="white"
+                size="small"
+                href="#contact-us"
+              />
             </div>
           </div>
-        </Container>
-      </nav>
-    </>
+        </div>
+      </Container>
+    </nav>
   )
 }
 
